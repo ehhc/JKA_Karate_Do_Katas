@@ -24,20 +24,25 @@ for(const jumper of document.getElementsByClassName("videoJumper")){
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-    let allVideosLoaded = true;
-    if(document.getElementById("video1").readyState === HTMLMediaElement.HAVE_NOTHING) {
-        allVideosLoaded = false;
-    }
-    if(document.getElementById("video2").readyState === HTMLMediaElement.HAVE_NOTHING) {
-        allVideosLoaded = false;
-    }
-    if(document.getElementById("video3").readyState === HTMLMediaElement.HAVE_NOTHING) {
-        allVideosLoaded = false;
-    }
-    if(! allVideosLoaded) {
-        document.getElementById("videosNotFoundModal").showModal();
-    } else {
-        document.getElementById("videosNotFoundModal").close();
-    }
+    setTimeout(function(){
+        let allVideosLoaded = true;
+        if(document.getElementById("video1").readyState === HTMLMediaElement.HAVE_NOTHING) {
+            allVideosLoaded = false;
+            console.error("Video 1 wurde nicht gefunden")
+        }
+        if(document.getElementById("video2").readyState === HTMLMediaElement.HAVE_NOTHING) {
+            allVideosLoaded = false;
+            console.error("Video 2 wurde nicht gefunden")
+        }
+        if(document.getElementById("video3").readyState === HTMLMediaElement.HAVE_NOTHING) {
+            allVideosLoaded = false;
+            console.error("Video 3 wurde nicht gefunden")
+        }
+        if(! allVideosLoaded) {
+            document.getElementById("videosNotFoundModal").showModal();
+        } else {
+            document.getElementById("videosNotFoundModal").close();
+        }
+    }, 2000)
 });
 
